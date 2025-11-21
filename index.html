@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#0c1117">
+    <title>Remote Control Hub - Pilih Remote Anda</title>
+    <meta name="description" content="Akses remote control Pak Eko, Remote Biasa, dan Remote Besek dari satu tempat yang mudah dan modern">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(180deg, #0c1117, #13171f);
+            min-height: 100vh;
+            color: #f8fafc;
+        }
+        
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+        
+        .content {
+            width: 100%;
+            max-width: 1200px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .title {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #3b9ec1, #47ccb4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+        
+        .subtitle {
+            color: #94a3b8;
+            font-size: 0.875rem;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            position: relative;
+            overflow: hidden;
+            background: #1a1f2a;
+            border: 2px solid #2d3748;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px -5px rgba(59, 158, 193, 0.25);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .card:nth-child(2) { animation-delay: 0.1s; }
+        .card:nth-child(3) { animation-delay: 0.2s; }
+        
+        .card:hover {
+            transform: translateY(-0.25rem);
+            border-color: #3b9ec1;
+            box-shadow: 0 20px 40px -10px rgba(59, 158, 193, 0.35);
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #3b9ec1, #47ccb4);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .card:hover::before {
+            opacity: 0.1;
+        }
+        
+        .card-content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .icon-wrapper {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b9ec1, #47ccb4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+            animation: glow 2s ease-in-out infinite;
+        }
+        
+        .card:hover .icon-wrapper {
+            transform: scale(1.1);
+        }
+        
+        .icon {
+            width: 2rem;
+            height: 2rem;
+            stroke: white;
+            stroke-width: 2;
+            fill: none;
+        }
+        
+        .card-title {
+            font-size: 1.125rem;
+            font-weight: bold;
+            color: #f8fafc;
+            text-align: center;
+            transition: color 0.3s;
+        }
+        
+        .card:hover .card-title {
+            color: #3b9ec1;
+        }
+        
+        .card-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #94a3b8;
+            font-size: 0.75rem;
+            transition: color 0.3s;
+        }
+        
+        .card:hover .card-link {
+            color: #4dd4c5;
+        }
+        
+        .card-link svg {
+            width: 0.75rem;
+            height: 0.75rem;
+            transition: transform 0.3s;
+        }
+        
+        .card:hover .card-link svg {
+            transform: translateX(0.25rem);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: #94a3b8;
+            font-size: 0.75rem;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes glow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        @media (min-width: 640px) {
+            .title { font-size: 2.5rem; }
+            .grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+            .card { padding: 2rem; }
+            .icon-wrapper { width: 4rem; height: 4rem; }
+        }
+        
+        @media (min-width: 768px) {
+            .title { font-size: 3rem; }
+            .grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        }
+        
+        @media (min-width: 1024px) {
+            .title { font-size: 3.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <header class="header">
+                <h1 class="title">Remote Control Hub</h1>
+                <p class="subtitle">Pilih remote control yang ingin Anda gunakan</p>
+            </header>
+            
+            <main class="grid">
+                <a href="https://oleng989.github.io/eko/" target="_blank" rel="noopener noreferrer" class="card">
+                    <div class="card-content">
+                        <div class="icon-wrapper">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M6 11.5a2.5 2.5 0 0 1 5 0V18a2.5 2.5 0 0 1-5 0v-6.5ZM13 11.5a2.5 2.5 0 0 1 5 0V18a2.5 2.5 0 0 1-5 0v-6.5Z"/>
+                                <path d="M2 6a4 4 0 0 1 4-4h12a4 4 0 0 1 4 4v9.167c0 1.473-.806 2.828-2.098 3.53l-1.54.835A6.001 6.001 0 0 1 12 21.003a6 6 0 0 1-6.362-2.47l-1.54-.836A4.006 4.006 0 0 1 2 14.167V6Z"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">Remot Pak Eko</h3>
+                        <div class="card-link">
+                            <span>Buka Remote</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/>
+                                <line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="https://firmanuye12.github.io/dice-remot/" target="_blank" rel="noopener noreferrer" class="card">
+                    <div class="card-content">
+                        <div class="icon-wrapper">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/>
+                                <path d="M16 8h.01M12 12h.01M8 16h.01"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">Remot Biasa</h3>
+                        <div class="card-link">
+                            <span>Buka Remote</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/>
+                                <line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="https://firmanuye12.github.io/hilo/" target="_blank" rel="noopener noreferrer" class="card">
+                    <div class="card-content">
+                        <div class="icon-wrapper">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                <line x1="12" y1="22.08" x2="12" y2="12"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">Remot Besek</h3>
+                        <div class="card-link">
+                            <span>Buka Remote</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/>
+                                <line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+            </main>
+            
+            <footer class="footer">
+                <p>Klik pada kartu untuk membuka remote control</p>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
